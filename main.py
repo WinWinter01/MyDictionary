@@ -1,6 +1,6 @@
 from tkinter import *
-from MainMenu import MainMenu
-
+from EditWords import EditWords
+from CreateWidgets import CreateWidgets
 
 # Create Window
 window = Tk()
@@ -9,9 +9,8 @@ window.geometry("1300x700")
 window.wm_geometry(f"{1020}x{700}+{0}+{0}")
 window.config(bg="grey")
 
-# Create widgets
-
-menu = MainMenu(window)
+edit = EditWords(window)
+edit.create_widgets()
 
 
 window.mainloop()
