@@ -1,0 +1,2 @@
+1. show answer last word if it was incorrect
+2. cut spaces after, before word in test

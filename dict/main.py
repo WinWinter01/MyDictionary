@@ -4,4 +4,4 @@ from test import CheckWords
 
 test = CheckWords()
 edits = EditWords()
-dictionary = Interface(edits, test)
+dictionary = Interface(edits, test) 
