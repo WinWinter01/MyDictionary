@@ -9,7 +9,6 @@ class Interface:
         self.edits = edits
         self.test = test
 
-        self.count_test = 0
         self.FOLDER_PASS = "dictionaries"
         self.CURRENT_DICT_PATH = None
         self.type_dict = None
@@ -274,6 +273,7 @@ class Interface:
         self.button_widget = Button(text="push", command=self.test_check_word)
         self.button_widget.pack()
 
+        #self.type_dict = 0
         self.count_words = self.test.init_dict(self.CURRENT_DICT_PATH, self.type_dict, self.type_test)
         self.count_widget = Label(width=40, height=10)
         self.count_widget.pack(padx=10, pady=10)
@@ -282,9 +282,13 @@ class Interface:
         self.count_widget.config(text=f"{self.count_test}/{self.count_words}")
         self.count_widget.pack()
         
+        
         self.test_new_word()
 
     def test_new_word(self):
+        self.window.focus_force()
+        self.entry_widget.focus_set()
+        
         text = self.test.make_word()
         
         if text == False:
@@ -316,34 +320,40 @@ class Interface:
                 self.count_test += 1
                 self.count_widget.config(text=f"{self.count_test}/{self.count_words}")
                 self.window.configure(bg="#32CD32")
-                self.window.after(500, self.back_color) 
+                self.window.after(400, self.back_color) 
                 self.test_new_word()
             else:
-                self.Tru_answer_widget = Label(width=40, height=10)
+                self.count_words-=1
+                self.count_widget.config(text=f"{self.count_test}/{self.count_words}")
+                self.Tru_answer_widget = Label()
                 self.Tru_answer_widget.pack(padx=10, pady=10)
                 self.Tru_answer_widget.config(text=f"{self.word_to_check} - {self.translate_to_check}") 
                 self.window.configure(bg="#FF0000")
-                self.window.after(500, self.back_color)
+                self.window.after(400, self.back_color)
                 self.test_new_word()
 
         elif self.type_dict == 1:
             if answer == True and self.clicks_type2_test == 1:
                 self.window.configure(bg="#32CD32")
-                self.window.after(500, self.back_color) 
+                self.window.after(400, self.back_color)
+                self.window.focus_force()
+                self.entry_widget.focus_set()
             elif answer == True and self.clicks_type2_test == 2:
                 self.count_test += 1
                 self.clicks_type2_test = 0
                 self.count_widget.config(text=f"{self.count_test}/{self.count_words}")
                 self.window.configure(bg="#32CD32")
-                self.window.after(500, self.back_color)
+                self.window.after(400, self.back_color)
                 self.test_new_word()
             elif answer == False:
-                self.Tru_answer_widget = Label(width=40, height=10)
+                self.count_words-=1
+                self.count_widget.config(text=f"{self.count_test}/{self.count_words}")
+                self.Tru_answer_widget = Label()
                 self.Tru_answer_widget.pack(padx=10, pady=10)
                 self.Tru_answer_widget.config(text=f"{self.phrase_to_check} - {self.word_to_check} - {self.translate_to_check}") 
                 self.clicks_type2_test = 0
                 self.window.configure(bg="#FF0000")
-                self.window.after(500, self.back_color)	
+                self.window.after(400, self.back_color)	
                 self.test_new_word()
 
     def clear_widgets(self):

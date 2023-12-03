@@ -1,2 +1,7 @@
 1. show answer last word if it was incorrect
-2. cut spaces after, before word in test
+2. cut spaces after, sumbols before word
+3. do so when layout "phrase" space will add - 
+4. change size sumbols row when we change window size
+5. add change size of text
+6. add inscription at entry field in test
+7. addi inscription of quantity words

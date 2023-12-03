@@ -27,6 +27,7 @@ class CheckWords:
 
         #first type dict
         if self.type_dict == 0:
+            print(text, self.type_test)
             # word - > translate
             if self.type_test == 0 and text == translate:
                 return True
